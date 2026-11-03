@@ -5,7 +5,8 @@ from.config import settings
 
 # The @ in the password must be URL-encoded.
 # url = f'postgresql+psycopg2://postgres:somnath%40123@localhost/fastapi_db'
-url = f'postgresql://{settings.database_username}:{settings.database_password}@{settings.database_hostname}/{settings.database_name}'
+#url = f'postgresql://{settings.database_username}:{settings.database_password}@{settings.database_hostname}/{settings.database_name}'
+url= settings.database_url
 engine = create_engine(url=url)
 session_local = sessionmaker(bind=engine, autoflush=False, autocommit=False)
 Base = declarative_base()
