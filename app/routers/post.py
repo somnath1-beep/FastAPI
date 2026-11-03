@@ -14,7 +14,7 @@ router = APIRouter(
 @router.post('/',status_code=status.HTTP_201_CREATED,response_model=schemas.PostResponse)
 def create_post(post:schemas.CreatePost,db:Session=Depends(get_db), current_user=Depends(oauth2.get_current_user)):
     #new_post=models.user(**dict(post))
-    print(current_user) 
+    # print(current_user) 
     new_post=models.Post(title=post.title,content=post.content,owner_id=current_user.id)#return class instance before addind to database
     db.add(new_post)
     db.commit()

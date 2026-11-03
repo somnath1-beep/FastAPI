@@ -1,9 +1,10 @@
 from fastapi import FastAPI
 from .routers import post,user,auth,vote
 from fastapi.middleware.cors import CORSMiddleware
+from .database import engine
 
-# from . import models
-#models.Base.metadata.create_all(bind=engine) to create table in database
+from . import models
+models.Base.metadata.create_all(bind=engine) #to create table in database
 origins=["*"]# allow all origins to access the api
 app = FastAPI()
 app.add_middleware(
